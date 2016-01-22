@@ -1,0 +1,4 @@
+com.bootcamp.sdn.isolation.impl.impl
+org.opendaylight.yang.gen.v1.urn.opendaylight.params.xml.ns.yang.isolation.impl.rev151221
+org.opendaylight.yang.gen.v1.urn.opendaylight.params.xml.ns.yang.isolation.impl.rev151221.modules.module.configuration
+org.opendaylight.yang.gen.v1.urn.opendaylight.params.xml.ns.yang.isolation.impl.rev151221.modules.module.configuration.isolation

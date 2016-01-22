@@ -1,0 +1,22 @@
+Manifest-Version: 1.0
+Bnd-LastModified: 1453468139858
+Build-Jdk: 1.8.0_65
+Built-By: yongjie.wyj
+Bundle-ManifestVersion: 2
+Bundle-Name: netconfclient-api
+Bundle-SymbolicName: com.bootcamp.sdn.netconfclient-api
+Bundle-Version: 0.1.0
+Created-By: Apache Maven Bundle Plugin
+Export-Package: com.bootcamp.sdn.netconfclient.service;uses:="com.google
+ .common.base,org.opendaylight.controller.md.sal.binding.api,org.openday
+ light.controller.sal.connect.api,org.opendaylight.controller.sal.connec
+ t.netconf.listener,org.opendaylight.yang.gen.v1.urn.opendaylight.netcon
+ f.node.topology.rev150114.netconf.node.fields";version="0.1.0"
+Import-Package: com.google.common.base;version="[18.0,19)",org.opendayli
+ ght.controller.md.sal.binding.api;version="[1.2,2)",org.opendaylight.co
+ ntroller.sal.connect.api;version="[1.2,2)",org.opendaylight.controller.
+ sal.connect.netconf.listener;version="[1.2,2)",org.opendaylight.yang.ge
+ n.v1.urn.opendaylight.netconf.node.topology.rev150114.netconf.node.fiel
+ ds;version="[1.2,2)"
+Require-Capability: osgi.ee;filter:="(&(osgi.ee=JavaSE)(version=1.7))"
+Tool: Bnd-2.3.0.201405100607

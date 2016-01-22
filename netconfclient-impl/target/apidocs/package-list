@@ -1,0 +1,5 @@
+com.bootcamp.sdn.impl
+com.bootcamp.sdn.netconf.client
+org.opendaylight.yang.gen.v1.urn.opendaylight.params.xml.ns.yang.netconfclient.impl.rev141210
+org.opendaylight.yang.gen.v1.urn.opendaylight.params.xml.ns.yang.netconfclient.impl.rev141210.modules.module.configuration
+org.opendaylight.yang.gen.v1.urn.opendaylight.params.xml.ns.yang.netconfclient.impl.rev141210.modules.module.configuration.netconfclient

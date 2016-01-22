@@ -1,0 +1,112 @@
+module BootCamp-UG-cfg {
+
+  /*** NAMESPACE / PREFIX DEFINITION ***/
+  namespace "http://bootcamp.com/ns/yang/BootCamp-UG-cfg";
+
+  prefix "cfg";
+
+  /*** LINKAGE (IMPORTS / INCLUDES) ***/
+  import ietf-inet-types { prefix "inet"; }
+  import BootCamp-UG-types { prefix "types"; }
+  import BootCamp-UG-isolation { prefix "iso"; }
+
+  /*** META INFORMATION ***/
+  organization "BootCamp.com";
+
+  contact
+    "BootCamp.com
+
+     E-mail: yongjie.wyj@alibaba-inc.com";
+
+  description 
+     "All rights reserved.";
+
+  revision "2015-12-11" {
+    description
+      "Initial revision.";
+  }
+
+  grouping connection-cfg {
+    leaf protocol {
+      type types:protocols;
+      mandatory true;
+    }
+
+    leaf ip-version {
+      type inet:ip-version;
+      mandatory true;
+    }
+
+    leaf host {
+      type inet:host;
+      mandatory true;
+    }
+
+    leaf port {
+      type inet:port-number;
+      default 22;
+    }
+
+    leaf username {
+      type string {
+        pattern "[a-zA-Z0-9\.]{3,32}";
+      }
+      default "root";
+    }
+
+    leaf password {
+      type string {
+        length "3 .. 128";
+      }
+    }
+  }
+
+  identity cfg-type {
+      description "Base type for config item.";
+  }
+
+  identity switch {
+    base cfg-type;
+  }
+
+  identity cfgpoint {
+    base cfg-type;
+  }
+
+  container configurations {
+    description "Configurations for switch and config-point.";
+
+    list configuration {
+      key name;
+      leaf name {
+        type string {
+          length "3 .. 128";
+        }
+      }
+
+      leaf type {
+        type identityref {
+          base cfg-type;
+        }
+      }
+
+      uses types:switch-image;
+      uses connection-cfg;
+
+      choice elem-type {
+        case switch {
+          when "/configuration/configuration/type = 'switch'";
+
+          uses types:switch-status;
+
+          leaf isolation-policy {
+            type leafref {
+              path "/iso:isolation-policies/iso:policy/iso:type";
+            }
+            config false;
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,22 @@
+<features xmlns="http://karaf.apache.org/xmlns/features/v1.2.0" name="odl-auto-upgrade-upgrade-${project.version}" xsi:schemaLocation="http://karaf.apache.org/xmlns/features/v1.2.0 http://karaf.apache.org/xmlns/features/v1.2.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <repository>mvn:org.opendaylight.yangtools/features-yangtools/${yangtools.version}/xml/features</repository>
+  <repository>mvn:org.opendaylight.controller/features-mdsal/${mdsal.version}/xml/features</repository>
+  <repository>mvn:org.opendaylight.controller/features-restconf/${mdsal.version}/xml/features</repository>
+  <repository>mvn:com.bootcamp.sdn/auto-upgrade-commons-features/${project.version}/xml/features</repository>
+  <feature name="odl-auto-upgrade-upgrade-api" version="${project.version}" description="OpenDaylight :: auto-upgrade-upgrade :: api">
+    <feature version="${yangtools.version}">odl-yangtools-models</feature>
+    <feature version="${project.version}">odl-auto-upgrade-commons</feature>
+    <bundle>mvn:com.bootcamp.sdn/auto-upgrade-upgrade-api/${project.version}</bundle>
+  </feature>
+  <feature name="odl-auto-upgrade-upgrade" version="${project.version}" description="OpenDaylight :: auto-upgrade-upgrade">
+    <feature version="${mdsal.version}">odl-mdsal-broker</feature>
+    <feature version="${project.version}">odl-auto-upgrade-upgrade-api</feature>
+    <feature version="${project.version}">odl-netconfclient-rest</feature>
+    <bundle>mvn:com.bootcamp.sdn/auto-upgrade-upgrade-impl/${project.version}</bundle>
+    <configfile finalname="${configfile.directory}/51-upgrade-service.xml">mvn:com.bootcamp.sdn/auto-upgrade-upgrade-impl/${project.version}/xml/config</configfile>
+  </feature>
+  <feature name="odl-auto-upgrade-upgrade-rest" version="${project.version}" description="OpenDaylight :: auto-upgrade-upgrade :: REST">
+    <feature version="${project.version}">odl-auto-upgrade-upgrade</feature>
+    <feature version="${mdsal.version}">odl-restconf</feature>
+  </feature>
+</features>

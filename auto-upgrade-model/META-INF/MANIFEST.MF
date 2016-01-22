@@ -1,0 +1,12 @@
+Manifest-Version: 1.0
+Bnd-LastModified: 1453474291757
+Build-Jdk: 1.8.0_65
+Built-By: yongjie.wyj
+Bundle-ManifestVersion: 2
+Bundle-Name: com.bootcamp.sdn.auto-upgrade-model
+Bundle-SymbolicName: com.bootcamp.sdn.auto-upgrade-model
+Bundle-Version: 0.1.0
+Created-By: Apache Maven Bundle Plugin
+Import-Package: org.opendaylight.yangtools.yang.binding.annotations;vers
+ ion="[0.7,1)"
+Tool: Bnd-2.1.0.20130426-122213

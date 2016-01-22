@@ -1,0 +1,6 @@
+com.bootcamp.sdn.finite.state.machine.fsm
+com.bootcamp.sdn.finite.state.machine.step
+org.opendaylight.controller.config.yang.config.state_machine
+org.opendaylight.yang.gen.v1.urn.opendaylight.params.xml.ns.yang.controller.config.state.machine.rev151221
+org.opendaylight.yang.gen.v1.urn.opendaylight.params.xml.ns.yang.controller.config.state.machine.rev151221.modules.module.configuration
+org.opendaylight.yang.gen.v1.urn.opendaylight.params.xml.ns.yang.controller.config.state.machine.rev151221.modules.module.configuration.machine

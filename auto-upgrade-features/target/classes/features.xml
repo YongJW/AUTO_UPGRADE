@@ -1,0 +1,24 @@
+<features xmlns="http://karaf.apache.org/xmlns/features/v1.2.0" name="odl-auto-upgrade-0.1" xsi:schemaLocation="http://karaf.apache.org/xmlns/features/v1.2.0 http://karaf.apache.org/xmlns/features/v1.2.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <repository>mvn:org.opendaylight.yangtools/features-yangtools/0.7.3-Lithium-SR3/xml/features</repository>
+  <repository>mvn:org.opendaylight.controller/features-mdsal/1.2.3-Lithium-SR3/xml/features</repository>
+  <repository>mvn:org.opendaylight.controller/features-restconf/1.2.3-Lithium-SR3/xml/features</repository>
+  <repository>mvn:com.bootcamp.sdn/auto-upgrade-commons-features/0.1/xml/features</repository>
+  <repository>mvn:com.bootcamp.sdn/auto-upgrade-isolation-features/0.1/xml/features</repository>
+  <repository>mvn:com.bootcamp.sdn/auto-upgrade-upgrade-features/0.1/xml/features</repository>
+  <feature name="odl-auto-upgrade-api" version="0.1" description="OpenDaylight :: auto-upgrade :: api">
+    <feature version="0.7.3-Lithium-SR3">odl-yangtools-models</feature>
+    <feature version="0.1">odl-auto-upgrade-commons</feature>
+  </feature>
+  <feature name="odl-auto-upgrade" version="0.1" description="OpenDaylight :: auto-upgrade">
+    <feature version="1.2.3-Lithium-SR3">odl-mdsal-broker</feature>
+    <feature version="1.2.3-Lithium-SR3">odl-netconf-mdsal</feature>
+    <feature version="0.1">odl-auto-upgrade-isolation</feature>
+    <feature version="0.1">odl-auto-upgrade-upgrade</feature>
+    <bundle>mvn:com.bootcamp.sdn/auto-upgrade-finite-state-machine/0.1</bundle>
+    <configfile finalname="etc/opendaylight/karaf/40-finite-state-machine.xml">mvn:com.bootcamp.sdn/auto-upgrade-finite-state-machine/0.1/xml/config</configfile>
+  </feature>
+  <feature name="odl-auto-upgrade-rest" version="0.1" description="OpenDaylight :: auto-upgrade :: REST">
+    <feature version="0.1">odl-auto-upgrade</feature>
+    <feature version="1.2.3-Lithium-SR3">odl-restconf</feature>
+  </feature>
+</features>

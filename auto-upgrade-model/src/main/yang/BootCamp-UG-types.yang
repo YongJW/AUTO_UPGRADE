@@ -1,0 +1,170 @@
+module BootCamp-UG-types {
+
+  /*** NAMESPACE / PREFIX DEFINITION ***/
+  namespace "http://bootcamp.com/ns/yang/BootCamp-UG-types";
+
+  prefix "types";
+
+  /*** LINKAGE (IMPORTS / INCLUDES) ***/
+  import ietf-inet-types { prefix inet; }
+
+  /*** META INFORMATION ***/
+  organization "BootCamp.com";
+
+  contact
+    "BootCamp.com
+
+     E-mail: yongjie.wyj@alibaba-inc.com";
+
+  description 
+     "All rights reserved.";
+
+  revision "2015-12-11" {
+    description
+      "Initial revision.";
+  }
+
+  typedef upgrade-status {
+    type enumeration {
+      enum INITIAL {
+        value "0";
+        description "Switch upgrading not started.";
+      }
+      enum CONFIG {
+        value "1";
+        description "Config the switch and config-point for switch upgrading.";
+      }
+      enum PRECHECK {
+        value "2";
+        description "Check the switch and config-point status before we upgrade the switch.";
+      }
+      enum COPYIMAGE {
+        value "3";
+        description "Copy the specified software package from config-point to switch.";
+      }
+      enum ISOLATEFLOW {
+        value "4";
+        description "Isolate the flows before we upgrade the switch based on the isolate policy.";
+      }
+      enum UPGRADE {
+        value "5";
+        description "Tell the switch to upgrade to the new version, may need to restart the process or the switch.";
+      }
+      enum POSTCHECK {
+        value "6";
+        description "Check the switch status after switch upgraded.";
+      }
+      enum SUCCESS {
+        value "7";
+        description "The switch upgrades successfully.";
+      }
+      enum FAIL {
+        value "8";
+        description "Failed to upgrade the switch.";
+      }
+    }
+  }
+
+  typedef protocols {
+    type enumeration {
+      enum SSH {
+        value "0";
+      }
+      enum TLS {
+        value "1";
+      }
+      enum SCP {
+        value "2";
+      }
+      enum BGP {
+        value "3";
+      }
+      enum OSPF {
+        value "4";
+      }
+      enum ISIS {
+        value "5";
+      }
+      enum MLAG {
+        value "6";
+      }
+      enum LACP {
+        value "7";
+      }
+    }
+  }
+
+  typedef interface-type {
+    type enumeration {
+      enum PHY;
+      enum LACP;
+      enum LAG;
+      enum VLAN;
+    }
+  }
+
+  typedef interface-state {
+    type enumeration {
+      enum UP;
+      enum DOWN;
+    }
+  }
+
+  grouping interface {
+    leaf type {
+      type interface-type;
+    }
+
+    leaf name {
+      type string {
+        length "3 .. 64";
+      }
+    }
+  }
+
+  grouping interface-status {
+    list interfaces {
+      key "type name";
+
+      uses interface;
+
+      leaf prev-state {
+        type interface-state;
+      }
+
+      leaf cur-state {
+        type interface-state;
+      }
+    }
+  }
+
+  grouping switch-image {
+    description "The switch software package for switch upgrading.";
+
+    leaf repository {
+      type inet:uri;
+      default "/netconf/repository";
+      description "The directory for the switch or config point to save the switch soft packages.
+                   The direcotry SHOULD be created automatically if not present.";
+    }
+
+    leaf file {
+      type string {
+        length "0 .. 128";
+      }
+      mandatory true;
+    }
+  }
+
+  grouping switch-status {
+    leaf prev-status {
+      type upgrade-status;
+      config false;
+    }
+
+    leaf current-status {
+      type upgrade-status;
+      config false;
+    }
+  }
+}

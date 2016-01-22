@@ -1,0 +1,10 @@
+<features xmlns="http://karaf.apache.org/xmlns/features/v1.2.0" name="odl-auto-upgrade-commons-${project.version}" xsi:schemaLocation="http://karaf.apache.org/xmlns/features/v1.2.0 http://karaf.apache.org/xmlns/features/v1.2.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <repository>mvn:org.opendaylight.yangtools/features-yangtools/${yangtools.version}/xml/features</repository>
+  <repository>mvn:org.opendaylight.controller/features-mdsal/${mdsal.version}/xml/features</repository>
+  <feature name="odl-auto-upgrade-commons" version="${project.version}" description="OpenDaylight :: auto-upgrade-commons :: commons">
+    <feature version="${yangtools.version}">odl-yangtools-models</feature>
+    <feature version="${mdsal.version}">odl-mdsal-broker</feature>
+    <bundle>mvn:com.bootcamp.sdn/jcraft-lib/${project.version}</bundle>
+    <bundle>mvn:com.bootcamp.sdn/auto-upgrade-model/${project.version}</bundle>
+  </feature>
+</features>

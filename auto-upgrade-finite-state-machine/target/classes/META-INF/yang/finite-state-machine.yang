@@ -1,0 +1,90 @@
+module state-machine{
+
+	/*** NAMESPACE / PREFIX DEFINITION ***/
+	namespace "urn:opendaylight:params:xml:ns:yang:controller:config:state-machine";
+
+	prefix "machine";
+
+	/*** LINKAGE (IMPORTS / INCLUDES) ***/
+	import config { prefix config; revision-date 2013-04-05; }
+	import opendaylight-md-sal-binding { prefix md-sal-binding; revision-date 2013-10-28; }
+	import isolation-impl { prefix isolation; revision-date 2015-12-21; }
+	import upgrade-impl { prefix upgrade; revision-date 2015-12-21; }
+
+	/*** META INFORMATION ***/
+	organization "Alibaba.com";
+
+	contact
+	"Alibaba.com
+	E-mail: yongjie.wyj@alibaba-inc.om";
+
+	description 
+	"This module contains a collection of YANG definitions for state-machine.
+	All rights reserved.";
+
+	revision "2015-12-21" {
+		description
+		"Initial revision.";
+	}
+  
+	identity machine {
+		base config:module-type;
+		config:java-name-prefix Machine;
+	}
+	
+	augment "/config:modules/config:module/config:configuration" {
+        case machine {
+            when "/config:modules/config:module/config:type = 'machine'";
+            
+            //ISOLATION
+            container isolation {
+                uses config:service-ref {
+                    refine type {
+                        mandatory true;
+                        config:required-identity isolation:isolation-service;
+                    }
+                }
+            }
+            
+            //ISOLATION
+            container upgrade {
+                uses config:service-ref {
+                    refine type {
+                        mandatory true;
+                        config:required-identity upgrade:upgrade-service;
+                    }
+                }
+            }
+            
+            //Broker
+			container broker {
+		        uses config:service-ref {
+		            refine type {
+		                mandatory true;
+		                config:required-identity md-sal-binding:binding-broker-osgi-registry;
+		            }
+		        }
+		    }
+		    
+		    //DataBroker
+            container data-broker {
+                uses config:service-ref {
+                    refine type {
+                        mandatory false;
+                        config:required-identity md-sal-binding:binding-async-data-broker;
+                    }
+                }
+            }
+            
+            container rpc-registry {
+                uses config:service-ref {
+                    refine type {
+                        mandatory true;
+                        config:required-identity md-sal-binding:binding-rpc-registry;
+                    }
+                }
+            }
+            
+        }
+    }
+}

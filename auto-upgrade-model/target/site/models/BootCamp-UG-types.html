@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>BootCamp-UG-types</title>
+  </head>
+  <body>
+    <h1>BootCamp-UG-types</h1>
+    
+    <h2>Base Information</h2>
+    <table>
+        <tr>
+            <td><strong>prefix</strong></td>
+            <td>types</td>
+        </tr>
+        <tr>
+            <td><strong>namespace</strong></td>
+            <td>http://bootcamp.com/ns/yang/BootCamp-UG-types</td>
+        </tr>
+        <tr>
+            <td><strong>revision</strong></td>
+            <td>2015-12-11</td>
+        </tr>
+        <tr>
+            <td><strong>description</strong></td>
+            <td>All rights reserved.</td>
+        </tr>
+        <tr>
+            <td><strong>yang-version</strong></td>
+            <td>1</td>
+        </tr>
+        <tr>
+    <td><strong>imports</strong></td><td>        inet:ietf-inet-types;
+    </td>    </tr>
+    </table>
+    
+    <div>
+        <h3>Type Definitions Summary</h3>
+        <table>
+            <tr>
+                <th>Name</th>
+                <th>Description</th>
+            </tr>
+            <tr>
+                <td>
+                <a href="#interface-state"><strong>interface-state</strong></a>
+                </td>
+                <td>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                <a href="#interface-type"><strong>interface-type</strong></a>
+                </td>
+                <td>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                <a href="#protocols"><strong>protocols</strong></a>
+                </td>
+                <td>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                <a href="#upgrade-status"><strong>upgrade-status</strong></a>
+                </td>
+                <td>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <h3>Groupings Summary</h3>
+    <table>
+        <tr>
+            <th>Name</th>
+            <th>Description</th>
+        </tr>
+        <tr>
+            <td>
+            <a href="#interface"><strong>interface</strong></a>
+            </td>
+            <td>
+            </td>
+        </tr>
+        <tr>
+            <td>
+            <a href="#interface-status"><strong>interface-status</strong></a>
+            </td>
+            <td>
+            </td>
+        </tr>
+        <tr>
+            <td>
+            <a href="#switch-image"><strong>switch-image</strong></a>
+            </td>
+            <td>
+            The switch software package for switch upgrading.
+            </td>
+        </tr>
+        <tr>
+            <td>
+            <a href="#switch-status"><strong>switch-status</strong></a>
+            </td>
+            <td>
+            </td>
+        </tr>
+    </table>
+    
+    <h2>Type Definitions</h2>
+    <ul>
+    <li>
+        <h3 id="interface-state">interface-state</h3>
+        <ul>
+        <li>
+            Base type: (urn:ietf:params:xml:ns:yang:1)enumeration
+        </li>
+        </ul>
+    </li>
+    <li>
+        <h3 id="interface-type">interface-type</h3>
+        <ul>
+        <li>
+            Base type: (urn:ietf:params:xml:ns:yang:1)enumeration
+        </li>
+        </ul>
+    </li>
+    <li>
+        <h3 id="protocols">protocols</h3>
+        <ul>
+        <li>
+            Base type: (urn:ietf:params:xml:ns:yang:1)enumeration
+        </li>
+        </ul>
+    </li>
+    <li>
+        <h3 id="upgrade-status">upgrade-status</h3>
+        <ul>
+        <li>
+            Base type: (urn:ietf:params:xml:ns:yang:1)enumeration
+        </li>
+        </ul>
+    </li>
+    </ul>
+    
+    
+    <h2>Groupings</h2>
+    <ul>
+    <li>
+        <h3 id="interface">interface</h3>
+        <ul>
+            <ul>
+            <strong><li>
+                leaf: type
+            </li>
+            </strong>
+            <ul>
+            <li>
+                type: <a href="#interface-type">interface-type</a>
+            </li>
+            </ul>
+            </ul>
+            <ul>
+            <strong><li>
+                leaf: name
+            </li>
+            </strong>
+            <ul>
+            <li>
+                type: <a href="#interface/name/string">string</a>
+            </li>
+            </ul>
+            </ul>
+        </ul>
+    </li>
+    <li>
+        <h3 id="interface-status">interface-status</h3>
+        <ul>
+            <ul>
+            <strong>
+            <li id="interface-status/interfaces">
+                list: interfaces
+            </li>
+            </strong>
+            <ul>
+            <li>
+                key definition: type
+            </li>
+            <li>
+                key definition: name
+            </li>
+            </ul>
+            <ul>
+            <strong><li>
+                uses: <a href="#interface">interface</a>
+            </li>
+            </strong>
+            <ul>
+            <li>refines:
+                <ul>
+                </ul>
+            </li>
+            </ul>
+            </ul>
+            <ul>
+            </ul>
+            <ul>
+            </ul>
+            <ul>
+            <ul>
+            <strong><li>
+                leaf: type
+            </li>
+            </strong>
+            <ul>
+            <li>
+                type: <a href="#interface-type">interface-type</a>
+            </li>
+            </ul>
+            </ul>
+            <ul>
+            <strong><li>
+                leaf: name
+            </li>
+            </strong>
+            <ul>
+            <li>
+                type: <a href="#interface/name/string">string</a>
+            </li>
+            </ul>
+            </ul>
+            <ul>
+            <strong><li>
+                leaf: prev-state
+            </li>
+            </strong>
+            <ul>
+            <li>
+                type: <a href="#interface-state">interface-state</a>
+            </li>
+            </ul>
+            </ul>
+            <ul>
+            <strong><li>
+                leaf: cur-state
+            </li>
+            </strong>
+            <ul>
+            <li>
+                type: <a href="#interface-state">interface-state</a>
+            </li>
+            </ul>
+            </ul>
+            </ul>
+            </ul>
+        </ul>
+    </li>
+    <li>
+        <h3 id="switch-image">switch-image</h3>
+        <ul>
+            <li>
+                Description: The switch software package for switch upgrading.
+            </li>
+            <ul>
+            <strong><li>
+                leaf: repository
+            </li>
+            </strong>
+            <ul>
+            <li>
+                description: The directory for the switch or config point to save the switch soft packages.
+                                   The direcotry SHOULD be created automatically if not present.
+            </li>
+            <li>
+                type: (urn:ietf:params:xml:ns:yang:ietf-inet-types)uri
+            </li>
+            <li>
+                default: /netconf/repository
+            </li>
+            </ul>
+            </ul>
+            <ul>
+            <strong><li>
+                leaf: file
+            </li>
+            </strong>
+            <ul>
+            <li>
+                type: <a href="#switch-image/file/string">string</a>
+            </li>
+            </ul>
+            </ul>
+        </ul>
+    </li>
+    <li>
+        <h3 id="switch-status">switch-status</h3>
+        <ul>
+            <ul>
+            <strong><li>
+                leaf: prev-status
+            </li>
+            </strong>
+            <ul>
+            <li>
+                type: <a href="#upgrade-status">upgrade-status</a>
+            </li>
+            </ul>
+            </ul>
+            <ul>
+            <strong><li>
+                leaf: current-status
+            </li>
+            </strong>
+            <ul>
+            <li>
+                type: <a href="#upgrade-status">upgrade-status</a>
+            </li>
+            </ul>
+            </ul>
+        </ul>
+    </li>
+    </ul>
+    
+    
+    
+    
+    
+    
+    
+    
+  </body>
+</html>

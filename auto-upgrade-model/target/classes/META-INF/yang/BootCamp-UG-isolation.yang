@@ -1,0 +1,48 @@
+module BootCamp-UG-isolation {
+
+  /*** NAMESPACE / PREFIX DEFINITION ***/
+  namespace "http://bootcamp.com/ns/yang/BootCamp-UG-isolation";
+
+  prefix "iso";
+  /*** LINKAGE (IMPORTS / INCLUDES) ***/
+
+  /*** META INFORMATION ***/
+  organization "BootCamp.com";
+
+  contact
+    "BootCamp.com
+
+     E-mail: yongjie.wyj@alibaba-inc.com";
+
+  description 
+     "All rights reserved.";
+
+  revision "2015-12-11" {
+    description
+      "Initial revision.";
+  }
+
+  identity policy-type {
+    description "Policy identity base type. All policy identities must be derived from this type.";
+  }
+  
+  identity port-policy {
+	base policy-type;
+    description "Port identity base type.";
+  }
+
+  container isolation-policies {
+    config false;
+
+    list policy {
+      key "type";
+
+      leaf type {
+        type identityref {
+          base policy-type;
+        }
+        default port-policy;
+      }
+    }
+  }
+}

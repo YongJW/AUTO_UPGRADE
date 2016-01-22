@@ -1,0 +1,39 @@
+module Alibaba-UG-oper {
+
+  /*** NAMESPACE / PREFIX DEFINITION ***/
+  namespace "http://alibaba.com/ns/yang/Alibaba-UG-oper";
+
+  prefix "oper";
+  /*** LINKAGE (IMPORTS / INCLUDES) ***/
+
+  /*** META INFORMATION ***/
+  organization "Alibaba.com";
+
+  contact
+    "Alibaba.com
+
+     E-mail: junchen.wt@alibaba-inc.com";
+
+  description 
+     "All rights reserved.";
+
+  revision "2015-12-11" {
+    description
+      "Initial revision.";
+  }
+  
+  container interface-status {
+    leaf stub {
+      type string;
+      description "do not need to sava any data yet, just used to work with pyang.";
+    }
+  }
+
+  rpc shutdown-all {
+
+  }
+
+  rpc upgrade {
+
+  }
+}

@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>BootCamp-UG-isolation</title>
+  </head>
+  <body>
+    <h1>BootCamp-UG-isolation</h1>
+    
+    <h2>Base Information</h2>
+    <table>
+        <tr>
+            <td><strong>prefix</strong></td>
+            <td>iso</td>
+        </tr>
+        <tr>
+            <td><strong>namespace</strong></td>
+            <td>http://bootcamp.com/ns/yang/BootCamp-UG-isolation</td>
+        </tr>
+        <tr>
+            <td><strong>revision</strong></td>
+            <td>2015-12-11</td>
+        </tr>
+        <tr>
+            <td><strong>description</strong></td>
+            <td>All rights reserved.</td>
+        </tr>
+        <tr>
+            <td><strong>yang-version</strong></td>
+            <td>1</td>
+        </tr>
+        <tr>
+        </tr>
+    </table>
+    
+    <h3>Identities Summary</h3>
+    <table>
+        <tr>
+            <th>Name</th>
+            <th>Description</th>
+        </tr>
+        <tr>
+            <td>
+            <a href="#policy-type"><strong>policy-type</strong></a>
+            </td>
+            <td>
+            Policy identity base type. All policy identities must be derived from this type.
+            </td>
+        </tr>
+        <tr>
+            <td>
+            <a href="#port-policy"><strong>port-policy</strong></a>
+            </td>
+            <td>
+            Port identity base type.
+            </td>
+        </tr>
+    </table>
+    <h3>Child Nodes Summary</h3>
+    <table>
+        <tr>
+            <th>Name</th>
+            <th>Description</th>
+        </tr>
+        <tr>
+            <td>
+            <a href="#isolation-policies"><strong>isolation-policies</strong></a>
+            </td>
+            <td>
+            </td>
+        </tr>
+    </table>
+    
+    
+    <h2>Identities</h2>
+    <ul>
+    <li>
+        <h3 id="policy-type">policy-type</h3>
+        <ul>
+        <li>
+            Description: Policy identity base type. All policy identities must be derived from this type.
+        </li>
+        </ul>
+    </li>
+    <li>
+        <h3 id="port-policy">port-policy</h3>
+        <ul>
+        <li>
+            Description: Port identity base type.
+        </li>
+        <li>
+            base: policy-type
+        </li>
+        </ul>
+    </li>
+    </ul>
+    
+    
+    <h2>Datastore Structure</h2>
+    <strong>BootCamp-UG-isolation</strong>
+    <ul>
+    <li>
+        <a href="#isolation-policies"><strong>isolation-policies</strong>
+        </a>
+        <ul>
+        <li>
+            <a href="#isolation-policies/policy"><strong>policy</strong> [type]
+            </a>
+            <ul>
+            <li>
+                type
+            </li>
+            </ul>
+        </li>
+        </ul>
+    </li>
+    </ul>
+    
+    <h2>Child nodes</h2>
+    
+    <h3>Direct children</h3>
+    <ul>
+    <li><strong><a href="#isolation-policies">isolation-policies</a>
+    </strong> (container)
+    <ul>
+        <li>configuration data: <strong>false</strong></li>
+    </ul>
+    </li>
+    </ul>
+    
+    <h3 id="isolation-policies">
+        isolation-policies
+    </h3>
+    <dl>
+      <dt>XML Path</dt>
+      <dd></dd>
+      <dt>Restconf path</dt>
+      <dd><code>BootCamp-UG-isolation:isolation-policies</code></dd>
+    </dl>
+    <h3>Direct children</h3>
+    <ul>
+    <li><strong><a href="#isolation-policies/policy">policy</a>
+    </strong> (list)
+    <ul>
+        <li>configuration data: <strong>false</strong></li>
+    </ul>
+    </li>
+    </ul>
+    
+    <h3>XML example</h3>
+    <pre>
+        &lt;isolation-policies xmlns="http://bootcamp.com/ns/yang/BootCamp-UG-isolation"&gt;<!-- Child nodes -->
+        <!-- policy -->
+            &lt!-- See <a href="#isolation-policies/policy">definition</a>
+             for child nodes.  --&gt
+            &lt!-- This node could appear multiple times --&gt
+            &lt;policy xmlns="http://bootcamp.com/ns/yang/BootCamp-UG-isolation"&gt;...&lt;/policy&gt;
+        
+        &lt;/isolation-policies&gt;
+    </pre>
+    </h3>
+    <h3 id="isolation-policies/policy">
+        isolation-policies/policy
+    </h3>
+    <dl>
+      <dt>XML Path</dt>
+      <dd></dd>
+      <dt>Restconf path</dt>
+      <dd><code>BootCamp-UG-isolation:isolation-policies/policy/{type}</code></dd>
+    </dl>
+    <h3>Direct children</h3>
+    <ul>
+    <li><strong>type</strong> (leaf)
+    <ul>
+        <li>configuration data: <strong>false</strong></li>
+        <li>mandatory: <strong>false</strong></li>
+    </ul>
+    </li>
+    </ul>
+    
+    <h3>XML example</h3>
+    <pre>
+        &lt;policy xmlns="http://bootcamp.com/ns/yang/BootCamp-UG-isolation"&gt;<!-- Child nodes -->
+        <!-- type -->
+            &lt;type xmlns="http://bootcamp.com/ns/yang/BootCamp-UG-isolation"&gt;...&lt;/type&gt;
+        
+        &lt;/policy&gt;
+    </pre>
+    </h3>
+    
+    
+    
+    
+    
+    
+  </body>
+</html>

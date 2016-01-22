@@ -1,0 +1,79 @@
+<?xml version="1.0"?>
+<application xmlns="http://wadl.dev.java.net/2009/02" xmlns:types="http://bootcamp.com/ns/yang/BootCamp-UG-types"
+xmlns:iso="http://bootcamp.com/ns/yang/BootCamp-UG-isolation"
+xmlns:inet="urn:ietf:params:xml:ns:yang:ietf-inet-types"
+ xmlns:cfg="http://bootcamp.com/ns/yang/BootCamp-UG-cfg">
+
+	<grammars>
+		<include href="BootCamp-UG-cfg.yang"/>
+		<include href="BootCamp-UG-types.yang"/>
+		<include href="BootCamp-UG-isolation.yang"/>
+		<include href="ietf-inet-types.yang"/>
+	</grammars>
+	
+	<resources base="http://localhost:9998/restconf">
+		<resource path="config">
+			<method name="POST">
+				<request>
+					<representation mediaType="application/xml" element="configurations"/>
+					<representation mediaType="text/xml" element="configurations"/>
+					<representation mediaType="application/json" element="configurations"/>
+					<representation mediaType="application/yang.data+xml" element="configurations"/>
+					<representation mediaType="application/yang.data+json" element="configurations"/>
+				</request>
+			</method>
+			<resource path="BootCamp-UG-cfg:configurations">
+				<method name="GET">
+					<response>
+						<representation mediaType="application/xml" element="configurations"/>
+						<representation mediaType="text/xml" element="configurations"/>
+						<representation mediaType="application/json" element="configurations"/>
+						<representation mediaType="application/yang.data+xml" element="configurations"/>
+						<representation mediaType="application/yang.data+json" element="configurations"/>
+					</response>
+				</method>
+				<method name="DELETE" />
+				<method name="PUT">
+					<request>
+						<representation mediaType="application/xml" element="configurations"/>
+						<representation mediaType="text/xml" element="configurations"/>
+						<representation mediaType="application/json" element="configurations"/>
+						<representation mediaType="application/yang.data+xml" element="configurations"/>
+						<representation mediaType="application/yang.data+json" element="configurations"/>
+					</request>
+				</method>
+				<method name="POST">
+					<request>
+						<representation mediaType="application/xml" element="configuration"/>
+						<representation mediaType="text/xml" element="configuration"/>
+						<representation mediaType="application/json" element="configuration"/>
+						<representation mediaType="application/yang.data+xml" element="configuration"/>
+						<representation mediaType="application/yang.data+json" element="configuration"/>
+					</request>
+				</method>
+				<resource path="configuration/{name}">
+					<param required="true" style="template" name="name" type="string"/>
+					<method name="GET">
+						<response>
+							<representation mediaType="application/xml" element="configuration"/>
+							<representation mediaType="text/xml" element="configuration"/>
+							<representation mediaType="application/json" element="configuration"/>
+							<representation mediaType="application/yang.data+xml" element="configuration"/>
+							<representation mediaType="application/yang.data+json" element="configuration"/>
+						</response>
+					</method>
+					<method name="DELETE" />
+					<method name="PUT">
+						<request>
+							<representation mediaType="application/xml" element="configuration"/>
+							<representation mediaType="text/xml" element="configuration"/>
+							<representation mediaType="application/json" element="configuration"/>
+							<representation mediaType="application/yang.data+xml" element="configuration"/>
+							<representation mediaType="application/yang.data+json" element="configuration"/>
+						</request>
+					</method>
+				</resource>
+			</resource>
+		</resource>
+	</resources>
+</application>

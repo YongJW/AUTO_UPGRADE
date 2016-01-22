@@ -1,0 +1,52 @@
+<?xml version="1.0"?>
+<application xmlns="http://wadl.dev.java.net/2009/02"  xmlns:oper="http://alibaba.com/ns/yang/Alibaba-UG-oper">
+
+	<grammars>
+		<include href="Alibaba-UG-oper.yang"/>
+	</grammars>
+	
+	<resources base="http://localhost:9998/restconf">
+		<resource path="config">
+			<method name="POST">
+				<request>
+					<representation mediaType="application/xml" element="interface-status"/>
+					<representation mediaType="text/xml" element="interface-status"/>
+					<representation mediaType="application/json" element="interface-status"/>
+					<representation mediaType="application/yang.data+xml" element="interface-status"/>
+					<representation mediaType="application/yang.data+json" element="interface-status"/>
+				</request>
+			</method>
+			<resource path="Alibaba-UG-oper:interface-status">
+				<method name="GET">
+					<response>
+						<representation mediaType="application/xml" element="interface-status"/>
+						<representation mediaType="text/xml" element="interface-status"/>
+						<representation mediaType="application/json" element="interface-status"/>
+						<representation mediaType="application/yang.data+xml" element="interface-status"/>
+						<representation mediaType="application/yang.data+json" element="interface-status"/>
+					</response>
+				</method>
+				<method name="DELETE" />
+				<method name="PUT">
+					<request>
+						<representation mediaType="application/xml" element="interface-status"/>
+						<representation mediaType="text/xml" element="interface-status"/>
+						<representation mediaType="application/json" element="interface-status"/>
+						<representation mediaType="application/yang.data+xml" element="interface-status"/>
+						<representation mediaType="application/yang.data+json" element="interface-status"/>
+					</request>
+				</method>
+			</resource>
+		</resource>
+		<resource path="operations">
+			<resource path="Alibaba-UG-oper:shutdown-all">
+				<method name="POST">
+				</method>
+			</resource>
+			<resource path="Alibaba-UG-oper:upgrade">
+				<method name="POST">
+				</method>
+			</resource>
+		</resource>
+	</resources>
+</application>

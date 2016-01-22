@@ -1,0 +1,24 @@
+<features xmlns="http://karaf.apache.org/xmlns/features/v1.2.0" name="odl-auto-upgrade-${project.version}" xsi:schemaLocation="http://karaf.apache.org/xmlns/features/v1.2.0 http://karaf.apache.org/xmlns/features/v1.2.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <repository>mvn:org.opendaylight.yangtools/features-yangtools/${yangtools.version}/xml/features</repository>
+  <repository>mvn:org.opendaylight.controller/features-mdsal/${mdsal.version}/xml/features</repository>
+  <repository>mvn:org.opendaylight.controller/features-restconf/${mdsal.version}/xml/features</repository>
+  <repository>mvn:com.bootcamp.sdn/auto-upgrade-commons-features/${project.version}/xml/features</repository>
+  <repository>mvn:com.bootcamp.sdn/auto-upgrade-isolation-features/${project.version}/xml/features</repository>
+  <repository>mvn:com.bootcamp.sdn/auto-upgrade-upgrade-features/${project.version}/xml/features</repository>
+  <feature name="odl-auto-upgrade-api" version="${project.version}" description="OpenDaylight :: auto-upgrade :: api">
+    <feature version="${yangtools.version}">odl-yangtools-models</feature>
+    <feature version="${project.version}">odl-auto-upgrade-commons</feature>
+  </feature>
+  <feature name="odl-auto-upgrade" version="${project.version}" description="OpenDaylight :: auto-upgrade">
+    <feature version="${mdsal.version}">odl-mdsal-broker</feature>
+    <feature version="${mdsal.version}">odl-netconf-mdsal</feature>
+    <feature version="${project.version}">odl-auto-upgrade-isolation</feature>
+    <feature version="${project.version}">odl-auto-upgrade-upgrade</feature>
+    <bundle>mvn:com.bootcamp.sdn/auto-upgrade-finite-state-machine/${project.version}</bundle>
+    <configfile finalname="${configfile.directory}/40-finite-state-machine.xml">mvn:com.bootcamp.sdn/auto-upgrade-finite-state-machine/${project.version}/xml/config</configfile>
+  </feature>
+  <feature name="odl-auto-upgrade-rest" version="${project.version}" description="OpenDaylight :: auto-upgrade :: REST">
+    <feature version="${project.version}">odl-auto-upgrade</feature>
+    <feature version="${mdsal.version}">odl-restconf</feature>
+  </feature>
+</features>

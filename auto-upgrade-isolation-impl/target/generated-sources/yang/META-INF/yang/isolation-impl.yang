@@ -1,0 +1,57 @@
+module isolation-impl {
+    yang-version 1;
+    namespace "urn:opendaylight:params:xml:ns:yang:isolation:impl";
+    prefix "isolation-impl";
+
+    import config { prefix config; revision-date 2013-04-05; }
+    import opendaylight-md-sal-binding { prefix md-sal-binding; revision-date 2013-10-28;}
+    import netconfclient-impl { prefix nc-client; revision-date 2014-12-10;}
+
+    description
+        "Service definition for isolation project";
+
+    revision "2015-12-21" {
+        description
+            "Initial revision";
+    }
+
+    identity isolation-service {
+        base config:service-type;
+        config:java-class "com.bootcamp.sdn.isolation.api.service.IsolationService";
+    }
+
+    identity isolation {
+        base config:module-type;
+        config:provided-service isolation-service;
+        config:java-name-prefix IsolationService;
+    }
+
+    augment "/config:modules/config:module/config:configuration" {
+        case isolation {
+            when "/config:modules/config:module/config:type = 'isolation'";
+		
+			//NC-CLIENT
+            container nc-client {
+                uses config:service-ref {
+                    refine type {
+                        mandatory true;
+                        config:required-identity nc-client:netconfclient-connection-service;
+                    }
+                }
+            }
+		
+			//Broker
+			container broker {
+		        uses config:service-ref {
+		            refine type {
+		                mandatory true;
+		                config:required-identity md-sal-binding:binding-broker-osgi-registry;
+		            }
+		        }
+		    }
+
+        }
+    }
+    
+    
+}

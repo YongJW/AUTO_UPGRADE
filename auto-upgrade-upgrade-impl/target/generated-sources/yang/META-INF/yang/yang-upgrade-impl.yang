@@ -1,0 +1,57 @@
+module upgrade-impl {
+    yang-version 1;
+    namespace "urn:opendaylight:params:xml:ns:yang:upgrade:impl";
+    prefix "upgrade-impl";
+
+    import config { prefix config; revision-date 2013-04-05; }
+    import opendaylight-md-sal-binding { prefix md-sal-binding; revision-date 2013-10-28;}
+    import netconfclient-impl { prefix nc-client; revision-date 2014-12-10;}
+
+    description
+        "Service definition for upgrade project";
+
+    revision "2015-12-21" {
+        description
+            "Initial revision";
+    }
+
+    identity upgrade-service {
+        base config:service-type;
+        config:java-class "com.bootcamp.sdn.upgrade.api.service.UpgradeService";
+    }
+
+    identity upgrade {
+        base config:module-type;
+        config:provided-service upgrade-service;
+        config:java-name-prefix UpgradeService;
+    }
+
+    augment "/config:modules/config:module/config:configuration" {
+        case upgrade {
+            when "/config:modules/config:module/config:type = 'upgrade'";
+		
+			//NC-CLIENT
+            container nc-client {
+                uses config:service-ref {
+                    refine type {
+                        mandatory true;
+                        config:required-identity nc-client:netconfclient-connection-service;
+                    }
+                }
+            }
+		
+			//Broker
+			container broker {
+		        uses config:service-ref {
+		            refine type {
+		                mandatory true;
+		                config:required-identity md-sal-binding:binding-broker-osgi-registry;
+		            }
+		        }
+		    }
+
+        }
+    }
+    
+    
+}

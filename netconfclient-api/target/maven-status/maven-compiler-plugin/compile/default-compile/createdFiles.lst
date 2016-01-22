@@ -1,0 +1,6 @@
+com\bootcamp\sdn\netconfclient\service\NetconfclientConfiguration.class
+com\bootcamp\sdn\netconfclient\service\NetconfclientConnectionContext.class
+com\bootcamp\sdn\netconfclient\service\NetconfclientAutoCloseable.class
+com\bootcamp\sdn\netconfclient\service\NetconfclientConnectionService.class
+com\bootcamp\sdn\netconfclient\service\NetconfclientConnContextAware.class
+com\bootcamp\sdn\netconfclient\service\NetconfclientConnectionCallback.class

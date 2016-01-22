@@ -1,0 +1,91 @@
+module netconfclient-impl {
+    yang-version 1;
+    namespace "urn:opendaylight:params:xml:ns:yang:netconfclient:impl";
+    prefix "netconfclient-impl";
+
+    import config { prefix config; revision-date 2013-04-05; }
+    import threadpool { prefix th; }
+    import netty { prefix netty; }
+    import opendaylight-md-sal-dom { prefix dom; }
+    import opendaylight-md-sal-binding { prefix md-sal-binding; revision-date 2013-10-28; }
+    import odl-netconf-cfg { prefix cfg-net; revision-date 2014-04-08; }
+
+    description
+        "Service definition for netconfclient project";
+
+    revision "2014-12-10" {
+        description
+            "Initial revision";
+    }
+
+    identity netconfclient-connection-service {
+        base config:service-type;
+        config:java-class "com.bootcamp.sdn.netconfclient.service.NetconfclientConnectionService";
+    }
+
+    identity netconfclient {
+        base config:module-type;
+        config:provided-service netconfclient-connection-service;
+        config:java-name-prefix Netconfclient;
+    }
+
+    augment "/config:modules/config:module/config:configuration" {
+        case netconfclient {
+            when "/config:modules/config:module/config:type = 'netconfclient'";
+
+            container dom-registry {
+                uses config:service-ref {
+                    refine type {
+                        mandatory true;
+                        config:required-identity dom:dom-broker-osgi-registry;
+                    }
+                }
+            }
+
+            container binding-registry {
+                uses config:service-ref {
+                    refine type {
+                        mandatory true;
+                        config:required-identity md-sal-binding:binding-broker-osgi-registry;
+                    }
+                }
+            }
+
+            container event-executor {
+                uses config:service-ref {
+                    refine type {
+                        mandatory true;
+                        config:required-identity netty:netty-event-executor;
+                    }
+                }
+            }
+
+            container processing-executor {
+                uses config:service-ref {
+                    refine type {
+                        mandatory true;
+                        config:required-identity th:threadpool;
+                    }
+                }
+            }
+
+            container client-dispatcher {
+                uses config:service-ref {
+                    refine type {
+                        mandatory true;
+                        config:required-identity cfg-net:netconf-client-dispatcher;
+                    }
+                }
+            }
+
+            container keepalive-executor {
+                uses config:service-ref {
+                    refine type {
+                        mandatory true;
+                        config:required-identity th:scheduled-threadpool;
+                    }
+                }
+            }
+        }
+    }
+}

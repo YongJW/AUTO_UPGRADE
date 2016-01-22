@@ -1,0 +1,35 @@
+<?xml version="1.0"?>
+<application xmlns="http://wadl.dev.java.net/2009/02"  xmlns:iso="http://bootcamp.com/ns/yang/BootCamp-UG-isolation">
+
+	<grammars>
+		<include href="BootCamp-UG-isolation.yang"/>
+	</grammars>
+	
+	<resources base="http://localhost:9998/restconf">
+		<resource path="operational">
+			<resource path="BootCamp-UG-isolation:isolation-policies">
+				<method name="GET">
+					<response>
+						<representation mediaType="application/xml" element="isolation-policies"/>
+						<representation mediaType="text/xml" element="isolation-policies"/>
+						<representation mediaType="application/json" element="isolation-policies"/>
+						<representation mediaType="application/yang.data+xml" element="isolation-policies"/>
+						<representation mediaType="application/yang.data+json" element="isolation-policies"/>
+					</response>
+				</method>
+				<resource path="policy/{type}">
+					<param required="true" style="template" name="type" type="identityref"/>
+					<method name="GET">
+						<response>
+							<representation mediaType="application/xml" element="policy"/>
+							<representation mediaType="text/xml" element="policy"/>
+							<representation mediaType="application/json" element="policy"/>
+							<representation mediaType="application/yang.data+xml" element="policy"/>
+							<representation mediaType="application/yang.data+json" element="policy"/>
+						</response>
+					</method>
+				</resource>
+			</resource>
+		</resource>
+	</resources>
+</application>

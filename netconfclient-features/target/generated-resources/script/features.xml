@@ -1,0 +1,27 @@
+<features xmlns="http://karaf.apache.org/xmlns/features/v1.2.0" name="odl-netconfclient-${project.version}" xsi:schemaLocation="http://karaf.apache.org/xmlns/features/v1.2.0 http://karaf.apache.org/xmlns/features/v1.2.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <repository>mvn:org.opendaylight.yangtools/features-yangtools/${yangtools.version}/xml/features</repository>
+  <repository>mvn:org.opendaylight.controller/features-mdsal/${mdsal.version}/xml/features</repository>
+  <repository>mvn:org.opendaylight.controller/features-restconf/${mdsal.version}/xml/features</repository>
+  <repository>mvn:org.opendaylight.controller/features-netconf-connector/${mdsal.version}/xml/features</repository>
+  <feature name="odl-netconfclient-api" version="${project.version}" description="OpenDaylight :: netconfclient :: api">
+    <feature version="${yangtools.version}">odl-yangtools-models</feature>
+    <bundle>mvn:com.bootcamp.sdn/netconfclient-api/${project.version}</bundle>
+  </feature>
+  <feature name="odl-netconfclient" version="${project.version}" description="OpenDaylight :: netconfclient">
+    <feature version="${mdsal.version}">odl-mdsal-broker</feature>
+    <feature version="${mdsal.version}">odl-netconf-connector-all</feature>
+    <feature version="${mdsal.version}">odl-netconf-mdsal</feature>
+    <feature version="${project.version}">odl-netconfclient-api</feature>
+    <bundle>mvn:com.bootcamp.sdn/netconfclient-impl/${project.version}</bundle>
+    <configfile finalname="${configfile.directory}/30-netconf-service.xml">mvn:com.bootcamp.sdn/netconfclient-impl/${project.version}/xml/config</configfile>
+  </feature>
+  <feature name="odl-netconfclient-rest" version="${project.version}" description="OpenDaylight :: netconfclient :: REST">
+    <feature version="${project.version}">odl-netconfclient</feature>
+    <feature version="${mdsal.version}">odl-restconf</feature>
+  </feature>
+  <feature name="odl-netconfclient-ui" version="${project.version}" description="OpenDaylight :: netconfclient :: UI">
+    <feature version="${project.version}">odl-netconfclient-rest</feature>
+    <feature version="${mdsal.version}">odl-mdsal-apidocs</feature>
+    <feature version="${mdsal.version}">odl-mdsal-xsql</feature>
+  </feature>
+</features>

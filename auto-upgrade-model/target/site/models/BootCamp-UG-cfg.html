@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>BootCamp-UG-cfg</title>
+  </head>
+  <body>
+    <h1>BootCamp-UG-cfg</h1>
+    
+    <h2>Base Information</h2>
+    <table>
+        <tr>
+            <td><strong>prefix</strong></td>
+            <td>cfg</td>
+        </tr>
+        <tr>
+            <td><strong>namespace</strong></td>
+            <td>http://bootcamp.com/ns/yang/BootCamp-UG-cfg</td>
+        </tr>
+        <tr>
+            <td><strong>revision</strong></td>
+            <td>2015-12-11</td>
+        </tr>
+        <tr>
+            <td><strong>description</strong></td>
+            <td>All rights reserved.</td>
+        </tr>
+        <tr>
+            <td><strong>yang-version</strong></td>
+            <td>1</td>
+        </tr>
+        <tr>
+    <td><strong>imports</strong></td><td>        types:BootCamp-UG-types;
+            iso:BootCamp-UG-isolation;
+            inet:ietf-inet-types;
+    </td>    </tr>
+    </table>
+    
+    <h3>Identities Summary</h3>
+    <table>
+        <tr>
+            <th>Name</th>
+            <th>Description</th>
+        </tr>
+        <tr>
+            <td>
+            <a href="#cfg-type"><strong>cfg-type</strong></a>
+            </td>
+            <td>
+            Base type for config item.
+            </td>
+        </tr>
+        <tr>
+            <td>
+            <a href="#cfgpoint"><strong>cfgpoint</strong></a>
+            </td>
+            <td>
+            </td>
+        </tr>
+        <tr>
+            <td>
+            <a href="#switch"><strong>switch</strong></a>
+            </td>
+            <td>
+            </td>
+        </tr>
+    </table>
+    <h3>Groupings Summary</h3>
+    <table>
+        <tr>
+            <th>Name</th>
+            <th>Description</th>
+        </tr>
+        <tr>
+            <td>
+            <a href="#connection-cfg"><strong>connection-cfg</strong></a>
+            </td>
+            <td>
+            </td>
+        </tr>
+    </table>
+    <h3>Child Nodes Summary</h3>
+    <table>
+        <tr>
+            <th>Name</th>
+            <th>Description</th>
+        </tr>
+        <tr>
+            <td>
+            <a href="#configurations"><strong>configurations</strong></a>
+            </td>
+            <td>
+            Configurations for switch and config-point.
+            </td>
+        </tr>
+    </table>
+    
+    
+    <h2>Identities</h2>
+    <ul>
+    <li>
+        <h3 id="cfg-type">cfg-type</h3>
+        <ul>
+        <li>
+            Description: Base type for config item.
+        </li>
+        </ul>
+    </li>
+    <li>
+        <h3 id="cfgpoint">cfgpoint</h3>
+        <ul>
+        <li>
+            base: cfg-type
+        </li>
+        </ul>
+    </li>
+    <li>
+        <h3 id="switch">switch</h3>
+        <ul>
+        <li>
+            base: cfg-type
+        </li>
+        </ul>
+    </li>
+    </ul>
+    
+    <h2>Groupings</h2>
+    <ul>
+    <li>
+        <h3 id="connection-cfg">connection-cfg</h3>
+        <ul>
+            <ul>
+            <strong><li>
+                leaf: protocol
+            </li>
+            </strong>
+            <ul>
+            <li>
+                type: (http://bootcamp.com/ns/yang/BootCamp-UG-types)protocols
+            </li>
+            </ul>
+            </ul>
+            <ul>
+            <strong><li>
+                leaf: ip-version
+            </li>
+            </strong>
+            <ul>
+            <li>
+                type: (urn:ietf:params:xml:ns:yang:ietf-inet-types)ip-version
+            </li>
+            </ul>
+            </ul>
+            <ul>
+            <strong><li>
+                leaf: host
+            </li>
+            </strong>
+            <ul>
+            <li>
+                type: (urn:ietf:params:xml:ns:yang:ietf-inet-types)host
+            </li>
+            </ul>
+            </ul>
+            <ul>
+            <strong><li>
+                leaf: port
+            </li>
+            </strong>
+            <ul>
+            <li>
+                type: (urn:ietf:params:xml:ns:yang:ietf-inet-types)port-number
+            </li>
+            <li>
+                default: 22
+            </li>
+            </ul>
+            </ul>
+            <ul>
+            <strong><li>
+                leaf: username
+            </li>
+            </strong>
+            <ul>
+            <li>
+                type: <a href="#connection-cfg/username/string">string</a>
+            </li>
+            <li>
+                default: root
+            </li>
+            </ul>
+            </ul>
+            <ul>
+            <strong><li>
+                leaf: password
+            </li>
+            </strong>
+            <ul>
+            <li>
+                type: <a href="#connection-cfg/password/string">string</a>
+            </li>
+            </ul>
+            </ul>
+        </ul>
+    </li>
+    </ul>
+    
+    <h2>Datastore Structure</h2>
+    <strong>BootCamp-UG-cfg</strong>
+    <ul>
+    <li>
+        <a href="#configurations"><strong>configurations</strong>
+        </a>
+        <ul>
+        <li>
+            <a href="#configurations/configuration"><strong>configuration</strong> [name]
+            </a>
+            <ul>
+            <li>
+                name
+            </li>
+            <li>
+                type
+            </li>
+            <li>
+                <i>repository</i>(U)
+            </li>
+            <li>
+                <i>file</i>(U)
+            </li>
+            <li>
+                <i>protocol</i>(U)
+            </li>
+            <li>
+                <i>ip-version</i>(U)
+            </li>
+            <li>
+                <i>host</i>(U)
+            </li>
+            <li>
+                <i>port</i>(U)
+            </li>
+            <li>
+                <i>username</i>(U)
+            </li>
+            <li>
+                <i>password</i>(U)
+            </li>
+            <li>
+                elem-type
+                 (choice)
+                <ul>
+                <li>
+                switch
+                <ul>
+                <li>
+                    <i>prev-status</i>(U)
+                </li>
+                <li>
+                    <i>current-status</i>(U)
+                </li>
+                <li>
+                    isolation-policy
+                </li>
+                </ul>
+                </li>
+                </ul>
+            </li>
+            </ul>
+        </li>
+        </ul>
+    </li>
+    </ul>
+    
+    <h2>Child nodes</h2>
+    
+    <h3>Direct children</h3>
+    <ul>
+    <li><strong><a href="#configurations">configurations</a>
+    </strong> (container)
+    <ul>
+        <li>configuration data: <strong>true</strong></li>
+    </ul>
+    </li>
+    </ul>
+    
+    <h3 id="configurations">
+        configurations
+    </h3>
+    <dl>
+      <dt>XML Path</dt>
+      <dd></dd>
+      <dt>Restconf path</dt>
+      <dd><code>BootCamp-UG-cfg:configurations</code></dd>
+    </dl>
+    <h3>Direct children</h3>
+    <ul>
+    <li><strong><a href="#configurations/configuration">configuration</a>
+    </strong> (list)
+    <ul>
+        <li>configuration data: <strong>true</strong></li>
+    </ul>
+    </li>
+    </ul>
+    
+    <h3>XML example</h3>
+    <pre>
+        &lt;configurations xmlns="http://bootcamp.com/ns/yang/BootCamp-UG-cfg"&gt;<!-- Child nodes -->
+        <!-- configuration -->
+            &lt!-- See <a href="#configurations/configuration">definition</a>
+             for child nodes.  --&gt
+            &lt!-- This node could appear multiple times --&gt
+            &lt;configuration xmlns="http://bootcamp.com/ns/yang/BootCamp-UG-cfg"&gt;...&lt;/configuration&gt;
+        
+        &lt;/configurations&gt;
+    </pre>
+    </h3>
+    <h3 id="configurations/configuration">
+        configurations/configuration
+    </h3>
+    <dl>
+      <dt>XML Path</dt>
+      <dd></dd>
+      <dt>Restconf path</dt>
+      <dd><code>BootCamp-UG-cfg:configurations/configuration/{name}</code></dd>
+    </dl>
+    <h3>Direct children</h3>
+    <ul>
+    <li><strong>name</strong> (leaf)
+    <ul>
+        <li>configuration data: <strong>true</strong></li>
+        <li>mandatory: <strong>false</strong></li>
+    </ul>
+    </li>
+    <li><strong>type</strong> (leaf)
+    <ul>
+        <li>configuration data: <strong>true</strong></li>
+        <li>mandatory: <strong>false</strong></li>
+    </ul>
+    </li>
+    <li><strong>repository</strong> (leaf)
+    <ul>
+        <li>configuration data: <strong>true</strong></li>
+        <li>mandatory: <strong>false</strong></li>
+    </ul>
+    </li>
+    <li><strong>file</strong> (leaf)
+    <ul>
+        <li>configuration data: <strong>true</strong></li>
+        <li>mandatory: <strong>true</strong></li>
+    </ul>
+    </li>
+    <li><strong>protocol</strong> (leaf)
+    <ul>
+        <li>configuration data: <strong>true</strong></li>
+        <li>mandatory: <strong>true</strong></li>
+    </ul>
+    </li>
+    <li><strong>ip-version</strong> (leaf)
+    <ul>
+        <li>configuration data: <strong>true</strong></li>
+        <li>mandatory: <strong>true</strong></li>
+    </ul>
+    </li>
+    <li><strong>host</strong> (leaf)
+    <ul>
+        <li>configuration data: <strong>true</strong></li>
+        <li>mandatory: <strong>true</strong></li>
+    </ul>
+    </li>
+    <li><strong>port</strong> (leaf)
+    <ul>
+        <li>configuration data: <strong>true</strong></li>
+        <li>mandatory: <strong>false</strong></li>
+    </ul>
+    </li>
+    <li><strong>username</strong> (leaf)
+    <ul>
+        <li>configuration data: <strong>true</strong></li>
+        <li>mandatory: <strong>false</strong></li>
+    </ul>
+    </li>
+    <li><strong>password</strong> (leaf)
+    <ul>
+        <li>configuration data: <strong>true</strong></li>
+        <li>mandatory: <strong>false</strong></li>
+    </ul>
+    </li>
+    </ul>
+    
+    <h3>XML example</h3>
+    <pre>
+        &lt;configuration xmlns="http://bootcamp.com/ns/yang/BootCamp-UG-cfg"&gt;<!-- Child nodes -->
+        <!-- name -->
+            &lt;name xmlns="http://bootcamp.com/ns/yang/BootCamp-UG-cfg"&gt;...&lt;/name&gt;
+        <!-- type -->
+            &lt;type xmlns="http://bootcamp.com/ns/yang/BootCamp-UG-cfg"&gt;...&lt;/type&gt;
+        <!-- repository -->
+            &lt;repository xmlns="http://bootcamp.com/ns/yang/BootCamp-UG-cfg"&gt;...&lt;/repository&gt;
+        <!-- file -->
+            &lt;file xmlns="http://bootcamp.com/ns/yang/BootCamp-UG-cfg"&gt;...&lt;/file&gt;
+        <!-- protocol -->
+            &lt;protocol xmlns="http://bootcamp.com/ns/yang/BootCamp-UG-cfg"&gt;...&lt;/protocol&gt;
+        <!-- ip-version -->
+            &lt;ip-version xmlns="http://bootcamp.com/ns/yang/BootCamp-UG-cfg"&gt;...&lt;/ip-version&gt;
+        <!-- host -->
+            &lt;host xmlns="http://bootcamp.com/ns/yang/BootCamp-UG-cfg"&gt;...&lt;/host&gt;
+        <!-- port -->
+            &lt;port xmlns="http://bootcamp.com/ns/yang/BootCamp-UG-cfg"&gt;...&lt;/port&gt;
+        <!-- username -->
+            &lt;username xmlns="http://bootcamp.com/ns/yang/BootCamp-UG-cfg"&gt;...&lt;/username&gt;
+        <!-- password -->
+            &lt;password xmlns="http://bootcamp.com/ns/yang/BootCamp-UG-cfg"&gt;...&lt;/password&gt;
+        <!-- elem-type -->
+            <!-- noop -->
+        
+        &lt;/configuration&gt;
+    </pre>
+    </h3>
+    
+    <h3>XML example</h3>
+    <pre>
+        &lt;configuration xmlns="http://bootcamp.com/ns/yang/BootCamp-UG-cfg"&gt;<!-- Child nodes -->
+        <!-- switch -->
+            <!-- noop -->
+        
+        &lt;/configuration&gt;
+    </pre>
+    </h3>
+    <h3>Direct children</h3>
+    <ul>
+    <li><strong>prev-status</strong> (leaf)
+    <ul>
+        <li>configuration data: <strong>false</strong></li>
+        <li>mandatory: <strong>false</strong></li>
+    </ul>
+    </li>
+    <li><strong>current-status</strong> (leaf)
+    <ul>
+        <li>configuration data: <strong>false</strong></li>
+        <li>mandatory: <strong>false</strong></li>
+    </ul>
+    </li>
+    <li><strong>isolation-policy</strong> (leaf)
+    <ul>
+        <li>configuration data: <strong>false</strong></li>
+        <li>mandatory: <strong>false</strong></li>
+    </ul>
+    </li>
+    </ul>
+    
+    <h3>XML example</h3>
+    <pre>
+        &lt;configuration xmlns="http://bootcamp.com/ns/yang/BootCamp-UG-cfg"&gt;<!-- Child nodes -->
+        <!-- prev-status -->
+            &lt;prev-status xmlns="http://bootcamp.com/ns/yang/BootCamp-UG-cfg"&gt;...&lt;/prev-status&gt;
+        <!-- current-status -->
+            &lt;current-status xmlns="http://bootcamp.com/ns/yang/BootCamp-UG-cfg"&gt;...&lt;/current-status&gt;
+        <!-- isolation-policy -->
+            &lt;isolation-policy xmlns="http://bootcamp.com/ns/yang/BootCamp-UG-cfg"&gt;...&lt;/isolation-policy&gt;
+        
+        &lt;/configuration&gt;
+    </pre>
+    </h3>
+    
+    
+    
+    
+    
+    
+  </body>
+</html>

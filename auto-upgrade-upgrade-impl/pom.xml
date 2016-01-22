@@ -1,0 +1,93 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+	<parent>
+	    <groupId>org.opendaylight.controller</groupId>
+	    <artifactId>config-parent</artifactId>
+	    <version>0.3.3-Lithium-SR3</version>
+	    <relativePath/>
+	</parent>
+
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>com.bootcamp.sdn</groupId>
+	<artifactId>auto-upgrade-upgrade-impl</artifactId>
+	<version>0.1</version>
+	<packaging>bundle</packaging>
+	
+	<dependencies>
+	
+		<dependency>
+			<groupId>${project.groupId}</groupId>
+			<artifactId>netconfclient-impl</artifactId>
+			<version>${project.version}</version>
+		</dependency>
+	
+		<dependency>
+			<groupId>${project.groupId}</groupId>
+			<artifactId>auto-upgrade-model</artifactId>
+			<version>${project.version}</version>
+		</dependency>
+	
+		<dependency>
+			<groupId>${project.groupId}</groupId>
+			<artifactId>auto-upgrade-upgrade-api</artifactId>
+			<version>${project.version}</version>
+		</dependency>
+		
+		<dependency>
+			<groupId>org.opendaylight.controller</groupId>
+			<artifactId>sal-core-api</artifactId>
+		</dependency>
+		
+		<dependency>
+			<groupId>org.opendaylight.controller.model</groupId>
+			<artifactId>model-inventory</artifactId>
+	    </dependency>
+	    <dependency>
+			<groupId>org.opendaylight.yangtools.model</groupId>
+			<artifactId>ietf-topology</artifactId>
+	    </dependency>
+		
+  </dependencies>
+	
+	<build>
+    <plugins>
+      <plugin>
+        <groupId>org.apache.felix</groupId>
+        <artifactId>maven-bundle-plugin</artifactId>
+        <extensions>true</extensions>
+        <configuration>
+          <instructions>
+            <Bundle-Name>${project.groupId}.${project.artifactId}</Bundle-Name>
+            <Export-Package>
+                  org.opendaylight.yang.gen.v1.urn.opendaylight.params.xml.ns.yang.upgrade.impl.rev151221.*
+            </Export-Package>
+          </instructions>
+        </configuration>
+      </plugin>
+    
+      <plugin>
+        <groupId>org.codehaus.mojo</groupId>
+        <artifactId>build-helper-maven-plugin</artifactId>
+        <executions>
+          <execution>
+            <id>netconf-attach-artifacts</id>
+            <phase>package</phase>
+            <goals>
+              <goal>attach-artifact</goal>
+            </goals>
+            <configuration>
+              <artifacts>
+                <artifact>
+                  <file>src/main/config/51-upgrade-service.xml</file>
+                  <type>xml</type>
+                  <classifier>config</classifier>
+                </artifact>
+              </artifacts>
+            </configuration>
+          </execution>
+        </executions>
+      </plugin>
+    </plugins>
+  </build>
+	
+</project>
