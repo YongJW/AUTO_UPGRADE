@@ -1,0 +1,31 @@
+/**
+ *  Add your application related css here
+ */
+ 
+.inputCls{
+	color:white;	
+}
+
+.form-width-custom{
+	width: 20%;
+	float: left;
+}
+
+.form-width-result-custom{
+	width: 20%;
+	float: left;
+	margin-left: 200px;
+	margin-right: auto;
+}
+
+.btn-cent{
+	display:block;
+	float: none;  
+    margin-left: auto;  
+    margin-right: auto;
+}
+
+.result-label{
+	color: white;
+	font-size: 20px;
+}

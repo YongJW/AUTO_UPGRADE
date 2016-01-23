@@ -1,0 +1,72 @@
+<!-- This is the landing page of you application, Update the content as per your requirements -->
+
+<form name="ConfigForm" ng-submit="autoGrade(config)">
+	<div id="width-group" class="form-width-custom">
+	    <div id="name-group" class="form-group">
+	        <label>Name</label>
+	        <input type="text" ng-model="config.name" class="form-control" placeholder="Switch Name" required >
+	        <span class="help-block"></span>
+	    </div>
+	    <div id="host-group" class="form-group">
+	        <label>Host</label>
+	        <input type="text" ng-model="config.host" class="form-control" placeholder="Switch IP" name="host" 
+	        required ng-pattern="/^((?:(?:25[0-5]|2[0-4]\d|((1\d{2})|([1-9]?\d)))\.){3}(?:25[0-5]|2[0-4]\d|((1\d{2})|([1-9]?\d))))$/" >
+	        <span ng-show="ConfigForm.host.$error.pattern">Not valid IP!</span>
+	        <span class="help-block"></span>
+	    </div>
+	    <div id="isolation-group" class="form-group">
+	    	<label>Isolation-policy</label>
+			<select class="form-control" ng-model="config.isolationPolicy" required >
+				<option value ="BootCamp-UG-isolation:port-policy">Port</option>
+			</select>
+		</div>
+	    <div id="username-group" class="form-group">
+	        <label>Username</label>
+	        <input type="text" ng-model="config.username" class="form-control" placeholder="Switch username" required >
+	        <span class="help-block"></span>
+	    </div>
+	    <div id="password-group" class="form-group">
+	        <label>Password</label>
+	        <input type="password" ng-model="config.password" class="form-control" placeholder="Switch password" ng-minlength=5 >
+	        <span class="help-block"></span>
+	    </div>
+	    <div id="port-group" class="form-group">
+	        <label>Port</label>
+	        <input type="text" ng-model="config.port" class="form-control" placeholder="Switch port" >
+	        <span class="help-block"></span>
+	    </div>
+	    <div id="repository-group" class="form-group">
+	        <label>Repository</label>
+	        <input type="text" ng-model="config.repository" class="form-control" placeholder="Switch repository" required >
+	        <span class="help-block"></span>
+	    </div>
+	    <div id="file-group" class="form-group">
+	        <label>File</label>
+	        <input type="text" ng-model="config.file" class="form-control" placeholder="Switch file" required >
+	        <span class="help-block"></span>
+	    </div>
+	    <div id="type-group" class="form-group">
+	    	<label>Type</label>
+			<select class="form-control" ng-model="config.type" required >
+				<option value ="BootCamp-UG-cfg:switch">Switch</option>
+			</select>
+		</div>
+	    
+	    <div id="type-group" class="form-group">
+			    <!-- SUBMIT BUTTON -->
+			    <button type="submit" ng-class="{'btn btn-success btn-lg btn-cent':isSent,'btn btn-none btn-lg btn-cent':isNon}">
+			        Upgrade!
+			    </button>
+			    <!-- <button type="button" class="btn btn-none btn-lg btn-cent" ng-click=showStep()>
+			        Check!
+			    </button> -->
+	    </div>
+	</div>
+	
+	<div id="width-result-group" class="form-width-result-custom">
+		</br>
+		<label class="result-label">Prev Step:<font style="color:blue">{{prev}}</font></label>
+		</br>
+		<label class="result-label">Current Step:<font style="color:red">{{current}}</font></label>
+	</div>
+</form>
